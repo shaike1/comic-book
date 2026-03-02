@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { listComics, createComic, deleteComic } from '../api/comics';
 import type { ComicSummary } from '../api/comics';
 import type { Comic } from '../types/comic';
-import { v4 as uuidv4 } from 'uuid';
 
 function emptyComic(): Comic {
   return {

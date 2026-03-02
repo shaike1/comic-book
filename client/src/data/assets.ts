@@ -7,7 +7,7 @@ export interface CharacterAsset {
 export interface BackgroundAsset {
   id: string;
   label: string;
-  background: { type: 'solid'; color: string } | { type: 'gradient'; from: string; to: string; direction: string };
+  background: { type: 'solid'; color: string } | { type: 'gradient'; from: string; to: string; direction: 'to bottom' | 'to top' | 'to right' | 'to bottom right' };
   preview: string; // CSS background string for thumbnail
 }
 

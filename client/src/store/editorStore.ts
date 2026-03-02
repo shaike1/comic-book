@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
-import type { Comic, Panel, ComicElement, Background } from '../types/comic';
+import type { Comic, Panel, ComicElement, NewComicElement, Background } from '../types/comic';
 
 const DEFAULT_BG: Background = { type: 'gradient', from: '#87CEEB', to: '#e0f7fa', direction: 'to bottom' };
 
@@ -32,7 +32,7 @@ interface EditorState {
   setBackground: (panelId: string, bg: Background) => void;
 
   // Element management
-  addElement: (panelId: string, el: Omit<ComicElement, 'id' | 'zIndex'>) => void;
+  addElement: (panelId: string, el: NewComicElement) => void;
   updateElement: (panelId: string, elId: string, patch: Partial<ComicElement>) => void;
   removeElement: (panelId: string, elId: string) => void;
   selectElement: (id: string | null) => void;
@@ -123,7 +123,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       };
     }),
 
-  addElement: (panelId, el) =>
+  addElement: (panelId, el: NewComicElement) =>
     set((s) => {
       if (!s.comic) return s;
       const panel = s.comic.panels.find((p) => p.id === panelId);

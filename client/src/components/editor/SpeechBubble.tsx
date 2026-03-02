@@ -27,9 +27,6 @@ export default function SpeechBubble({
   const isTailBottom = tailDirection.startsWith('bottom');
   const isTailRight = tailDirection.endsWith('right');
 
-  const tailX = isTailRight ? width - 50 : 30;
-  const tailY = isTailBottom ? bodyH : 0;
-
   if (style === 'thought') {
     return <ThoughtBubble text={text} width={width} height={height} fontSize={fontSize} selected={selected} />;
   }
@@ -43,7 +40,6 @@ export default function SpeechBubble({
   const tailTipY = isTailBottom ? height : 0;
   const tailLeft = isTailRight ? width - 55 : 25;
   const tailRight = isTailRight ? width - 25 : 55;
-  const tailBaseY = isTailBottom ? bodyH : tailSize;
 
   const path = isTailBottom
     ? `
@@ -116,7 +112,6 @@ export default function SpeechBubble({
 }
 
 function ThoughtBubble({ text, width, height, fontSize, selected }: Omit<Props, 'style' | 'tailDirection'>) {
-  const r = Math.min(width, height) / 2 - 4;
   const cx = width / 2;
   const cy = (height - 22) / 2;
   return (

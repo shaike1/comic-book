@@ -41,6 +41,10 @@ export interface StickerElement extends BaseElement {
 
 export type ComicElement = ImageElement | BubbleElement | TextElement | StickerElement;
 
+// Distributive Omit — correctly distributes over union members
+type DistributiveOmit<T, K extends string> = T extends unknown ? Omit<T, K> : never;
+export type NewComicElement = DistributiveOmit<ComicElement, 'id' | 'zIndex'>;
+
 export type BackgroundType = 'solid' | 'gradient';
 
 export interface SolidBackground {

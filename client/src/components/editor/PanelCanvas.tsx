@@ -1,7 +1,6 @@
-import { useRef, useCallback, useEffect, useState } from 'react';
-import type { Panel, ComicElement, BubbleStyle, TailDirection } from '../../types/comic';
+import { useRef, useEffect } from 'react';
+import type { Panel, ComicElement, NewComicElement, BubbleStyle, TailDirection } from '../../types/comic';
 import { useEditorStore } from '../../store/editorStore';
-import { BACKGROUNDS } from '../../data/assets';
 import DraggableElement from './DraggableElement';
 
 export const CANVAS_W = 800;
@@ -53,7 +52,7 @@ export default function PanelCanvas({ panel, containerWidth }: Props) {
 
     switch (asset.assetType) {
       case 'character': {
-        const el: Omit<ComicElement, 'id' | 'zIndex'> = {
+        const el: NewComicElement = {
           type: 'image',
           src: asset.data.src as string,
           label: asset.data.label as string,
@@ -68,7 +67,7 @@ export default function PanelCanvas({ panel, containerWidth }: Props) {
         break;
       }
       case 'sticker': {
-        const el: Omit<ComicElement, 'id' | 'zIndex'> = {
+        const el: NewComicElement = {
           type: 'sticker',
           emoji: asset.data.emoji as string,
           x: Math.max(0, dropX - 40),
@@ -82,7 +81,7 @@ export default function PanelCanvas({ panel, containerWidth }: Props) {
         break;
       }
       case 'bubble': {
-        const el: Omit<ComicElement, 'id' | 'zIndex'> = {
+        const el: NewComicElement = {
           type: 'bubble',
           text: 'הכנס טקסט',
           style: (asset.data.style as BubbleStyle) ?? 'speech',
