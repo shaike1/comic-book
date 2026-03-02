@@ -2,7 +2,8 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
 
-const dbDir = path.join(__dirname, '../../data');
+// DATA_DIR env var used in Docker; fallback to <cwd>/data for local dev
+const dbDir = process.env.DATA_DIR || path.join(process.cwd(), 'data');
 if (!fs.existsSync(dbDir)) {
   fs.mkdirSync(dbDir, { recursive: true });
 }

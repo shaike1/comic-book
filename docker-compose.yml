@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  # Express API + SQLite
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - PORT=3001
+      - DATA_DIR=/app/data
+    volumes:
+      - comic_data:/app/data   # SQLite persisted here
+    networks:
+      - internal
+    # Not exposed to the host — only reachable by client via Docker network
+
+  # React (Nginx) — serves static files + proxies /api/ to server
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "80:80"      # HTTP — change to "443:443" after adding SSL
+    depends_on:
+      - server
+    networks:
+      - internal
+
+volumes:
+  comic_data:          # Persistent SQLite data survives container restarts
+
+networks:
+  internal:
+    driver: bridge
