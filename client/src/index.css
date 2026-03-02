@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Heebo', 'Segoe UI', Arial, sans-serif;
+  background-color: #faf5ff;
+  direction: rtl;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c084fc;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9333ea;
+}
+
+/* Comic panel border */
+.comic-panel {
+  border: 3px solid #1e1b4b;
+  border-radius: 8px;
+  background: white;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+/* Speech bubble arrow (down-left) */
+.bubble-tail-dl::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 14px solid currentColor;
+}
+
+/* Drag ghost suppression */
+[draggable] {
+  -webkit-user-drag: element;
+  user-select: none;
+}
+
+/* Selection ring */
+.element-selected {
+  outline: 2px dashed #7c3aed;
+  outline-offset: 2px;
+}
+
+/* Panel thumbnail active */
+.panel-thumb-active {
+  ring: 3px;
+  ring-color: #7c3aed;
+}
+
+/* Shout bubble jagged */
+@keyframes pulse-ring {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
