@@ -9,5 +9,10 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.9.0",
+    "@vercel/node": "^3.0.0",
+    "uuid": "^9.0.0"
   }
 }

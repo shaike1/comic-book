@@ -17,37 +17,25 @@ export interface StickerAsset {
   label: string;
 }
 
-const dicebear = (style: string, seed: string) =>
-  `https://api.dicebear.com/9.x/${style}/png?seed=${encodeURIComponent(seed)}&size=200`;
+import {
+  HERO, PRINCESS, BOY, GIRL,
+  SCIENTIST, PIRATE, NINJA, WIZARD,
+  ALIEN, ROBOT, DRAGON, KNIGHT,
+} from './characters';
 
 export const CHARACTERS: CharacterAsset[] = [
-  // adventurer (cute cartoon kids)
-  { id: 'adv-1', label: 'נועה',     src: dicebear('adventurer', 'Noa') },
-  { id: 'adv-2', label: 'יונתן',    src: dicebear('adventurer', 'Yoni') },
-  { id: 'adv-3', label: 'מיה',      src: dicebear('adventurer', 'Mia') },
-  { id: 'adv-4', label: 'אלי',      src: dicebear('adventurer', 'Eli') },
-  { id: 'adv-5', label: 'שירה',     src: dicebear('adventurer', 'Shira') },
-  { id: 'adv-6', label: 'דוד',      src: dicebear('adventurer', 'David') },
-  // fun-emoji
-  { id: 'emo-1', label: 'שמח',      src: dicebear('fun-emoji', 'Happy') },
-  { id: 'emo-2', label: 'עצוב',     src: dicebear('fun-emoji', 'Sad') },
-  { id: 'emo-3', label: 'מופתע',    src: dicebear('fun-emoji', 'Wow') },
-  { id: 'emo-4', label: 'מצחיק',    src: dicebear('fun-emoji', 'Funny') },
-  // bottts (robots – kids love robots!)
-  { id: 'bot-1', label: 'רובוט 1',  src: dicebear('bottts', 'Robot1') },
-  { id: 'bot-2', label: 'רובוט 2',  src: dicebear('bottts', 'Robot2') },
-  { id: 'bot-3', label: 'רובוט 3',  src: dicebear('bottts', 'Robot3') },
-  // lorelei (simple clean)
-  { id: 'lor-1', label: 'ליאור',    src: dicebear('lorelei', 'Lior') },
-  { id: 'lor-2', label: 'טל',       src: dicebear('lorelei', 'Tal') },
-  // open-peeps (illustrated people)
-  { id: 'pep-1', label: 'ענבל',     src: dicebear('open-peeps', 'Inbal') },
-  { id: 'pep-2', label: 'עומר',     src: dicebear('open-peeps', 'Omer') },
-  // pixel-art
-  { id: 'pix-1', label: 'גיבור פיקסל', src: dicebear('pixel-art', 'Hero') },
-  { id: 'pix-2', label: 'נסיכת פיקסל', src: dicebear('pixel-art', 'Princess') },
-  // micah
-  { id: 'mic-1', label: 'חבר',      src: dicebear('micah', 'Buddy') },
+  { id: 'hero',      label: 'גיבור-על',  src: HERO },
+  { id: 'princess',  label: 'נסיכה',     src: PRINCESS },
+  { id: 'boy',       label: 'ילד',       src: BOY },
+  { id: 'girl',      label: 'ילדה',      src: GIRL },
+  { id: 'scientist', label: 'מדענית',    src: SCIENTIST },
+  { id: 'pirate',    label: 'פיראט',     src: PIRATE },
+  { id: 'ninja',     label: 'נינג\'ה',   src: NINJA },
+  { id: 'wizard',    label: 'קוסם',      src: WIZARD },
+  { id: 'alien',     label: 'חייזר',     src: ALIEN },
+  { id: 'robot',     label: 'רובוט',     src: ROBOT },
+  { id: 'dragon',    label: 'דרקון',     src: DRAGON },
+  { id: 'knight',    label: 'אביר',      src: KNIGHT },
 ];
 
 export const BACKGROUNDS: BackgroundAsset[] = [

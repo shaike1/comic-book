@@ -110,6 +110,7 @@ export default function PanelCanvas({ panel, containerWidth }: Props) {
         onMouseDown={handleCanvasClick}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        className="comic-panel"
         style={{
           width: CANVAS_W,
           height: CANVAS_H,
@@ -118,13 +119,12 @@ export default function PanelCanvas({ panel, containerWidth }: Props) {
           left: 0,
           transform: `scale(${scale})`,
           transformOrigin: 'top left',
-          background: bgStyle,
-          border: '3px solid #1e1b4b',
-          borderRadius: 10,
-          overflow: 'hidden',
-          cursor: 'default',
+          // background-color comes from comic-panel CSS class (warm off-white + halftone dots),
+          // but the actual scene background is painted via a child div so the dots overlay on top
         }}
       >
+        {/* Scene background painted below halftone dots */}
+        <div style={{ position: 'absolute', inset: 0, background: bgStyle, zIndex: 0 }} />
         {sortedElements.map((el) => (
           <DraggableElement key={el.id} element={el} panelId={panel.id} scale={scale} />
         ))}
